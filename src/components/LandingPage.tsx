@@ -189,16 +189,37 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </div>
           </div>
 
-          {/* Interactive Dashboard Preview */}
+          {/* Enhanced Interactive Dashboard Preview */}
           <div className="relative max-w-6xl mx-auto px-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl"></div>
-            <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 sm:p-4 overflow-hidden">
+            {/* Grid Background for Dark Theme */}
+            <div className="absolute inset-0 opacity-0 dark:opacity-20 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl"></div>
+              <div 
+                className="absolute inset-0 rounded-3xl"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '20px 20px'
+                }}
+              ></div>
+            </div>
+
+            {/* Animated Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl animate-pulse"></div>
+            
+            {/* Main Dashboard Container */}
+            <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 sm:p-4 overflow-hidden group">
+              
+              {/* Animated Border Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 animate-gradient-x"></div>
               
               {/* Mock Dashboard Header */}
-              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-4 mb-4 border border-gray-200/50 dark:border-gray-700/50">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-4 mb-4 border border-gray-200/50 dark:border-gray-700/50 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl animate-pulse">
                       <Shield className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -207,73 +228,85 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center animate-bounce">
                       <span className="text-white text-xs font-bold">U</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Mock Stats Cards */}
+              {/* Enhanced Stats Cards with Animations */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Platforms</span>
-                    <Grid3X3 className="h-3 w-3 text-blue-600" />
+                {[
+                  { title: 'Platforms', value: '5', icon: Grid3X3, color: 'blue', delay: '0ms' },
+                  { title: 'Accounts', value: '12', icon: Shield, color: 'green', delay: '100ms' },
+                  { title: 'Security', value: '98%', icon: TrendingUp, color: 'emerald', delay: '200ms', span: 'col-span-2' }
+                ].map((stat, index) => (
+                  <div 
+                    key={index}
+                    className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50 transform transition-all duration-500 hover:scale-105 hover:shadow-lg hover:-translate-y-1 ${stat.span || ''}`}
+                    style={{ animationDelay: stat.delay }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">{stat.title}</span>
+                      <div className={`p-1 rounded-lg bg-gradient-to-r ${
+                        stat.color === 'blue' ? 'from-blue-500 to-blue-600' :
+                        stat.color === 'green' ? 'from-green-500 to-green-600' :
+                        'from-emerald-500 to-emerald-600'
+                      } animate-pulse`}>
+                        <stat.icon className="h-3 w-3 text-white" />
+                      </div>
+                    </div>
+                    <div className={`text-lg font-bold bg-gradient-to-r ${
+                      stat.color === 'blue' ? 'from-blue-600 to-blue-700' :
+                      stat.color === 'green' ? 'from-green-600 to-green-700' :
+                      'from-emerald-600 to-emerald-700'
+                    } bg-clip-text text-transparent animate-pulse`}>
+                      {stat.value}
+                    </div>
                   </div>
-                  <div className="text-lg font-bold text-blue-600">5</div>
-                </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Accounts</span>
-                    <Shield className="h-3 w-3 text-green-600" />
-                  </div>
-                  <div className="text-lg font-bold text-green-600">12</div>
-                </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50 col-span-2">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Security</span>
-                    <TrendingUp className="h-3 w-3 text-emerald-600" />
-                  </div>
-                  <div className="text-lg font-bold text-emerald-600">98%</div>
-                </div>
+                ))}
               </div>
 
-              {/* Mock Search Bar */}
-              <div className="relative mb-4">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl pl-10 pr-4 py-3 border border-gray-200/50 dark:border-gray-700/50 text-sm text-gray-600 dark:text-gray-400">
+              {/* Enhanced Search Bar with Animation */}
+              <div className="relative mb-4 group">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 transition-colors duration-300 group-hover:text-blue-500" />
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl pl-10 pr-4 py-3 border border-gray-200/50 dark:border-gray-700/50 text-sm text-gray-600 dark:text-gray-400 transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg">
                   Search platforms and accounts...
                 </div>
-                <Button size="sm" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 text-xs">
+                <Button size="sm" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 text-xs hover:scale-105 transition-transform duration-200">
                   <Plus className="h-3 w-3 mr-1" />
                   Add
                 </Button>
               </div>
 
-              {/* Mock Content Grid */}
+              {/* Enhanced Content Grid with Staggered Animations */}
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
                 {/* Platforms Column */}
                 <div className="lg:col-span-1">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl">
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm">Platforms</h4>
                     <div className="space-y-2">
                       {[
-                        { name: 'Gmail', color: '#ea4335', accounts: 3 },
-                        { name: 'GitHub', color: '#333333', accounts: 2 },
-                        { name: 'LinkedIn', color: '#0077b5', accounts: 1 }
+                        { name: 'Gmail', color: '#ea4335', accounts: 3, delay: '0ms' },
+                        { name: 'GitHub', color: '#333333', accounts: 2, delay: '100ms' },
+                        { name: 'LinkedIn', color: '#0077b5', accounts: 1, delay: '200ms' }
                       ].map((platform, index) => (
-                        <div key={index} className="flex items-center justify-between p-2 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100/80 dark:hover:bg-gray-600/50 transition-colors cursor-pointer">
+                        <div 
+                          key={index} 
+                          className="flex items-center justify-between p-2 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100/80 dark:hover:bg-gray-600/50 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] hover:shadow-md group"
+                          style={{ animationDelay: platform.delay }}
+                        >
                           <div className="flex items-center space-x-2">
                             <div 
-                              className="w-6 h-6 rounded-lg flex items-center justify-center"
+                              className="w-6 h-6 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                               style={{ backgroundColor: `${platform.color}20` }}
                             >
                               <Mail className="h-3 w-3" style={{ color: platform.color }} />
                             </div>
                             <span className="text-xs font-medium text-gray-900 dark:text-white">{platform.name}</span>
                           </div>
-                          <Badge variant="secondary" className="text-xs">{platform.accounts}</Badge>
+                          <Badge variant="secondary" className="text-xs animate-pulse">{platform.accounts}</Badge>
                         </div>
                       ))}
                     </div>
@@ -282,10 +315,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
                 {/* Accounts Column */}
                 <div className="lg:col-span-3">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50 transform transition-all duration-500 hover:scale-[1.01] hover:shadow-xl">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="font-semibold text-gray-900 dark:text-white text-sm">Gmail Accounts</h4>
-                      <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-xs">
+                      <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-xs hover:scale-105 transition-transform duration-200">
                         <Plus className="h-3 w-3 mr-1" />
                         Add
                       </Button>
@@ -293,13 +326,17 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                     
                     <div className="space-y-3">
                       {[
-                        { name: 'Personal Gmail', email: 'john@gmail.com', username: 'john.doe' },
-                        { name: 'Work Gmail', email: 'john@company.com', username: 'j.doe' }
+                        { name: 'Personal Gmail', email: 'john@gmail.com', username: 'john.doe', delay: '0ms' },
+                        { name: 'Work Gmail', email: 'john@company.com', username: 'j.doe', delay: '150ms' }
                       ].map((account, index) => (
-                        <div key={index} className="bg-gradient-to-r from-gray-50/80 to-blue-50/80 dark:from-gray-700/50 dark:to-blue-900/20 rounded-xl p-4 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div 
+                          key={index} 
+                          className="bg-gradient-to-r from-gray-50/80 to-blue-50/80 dark:from-gray-700/50 dark:to-blue-900/20 rounded-xl p-4 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-300 cursor-pointer group transform hover:scale-[1.02] hover:-translate-y-1"
+                          style={{ animationDelay: account.delay }}
+                        >
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                              <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-lg">
+                              <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                                 <Mail className="h-4 w-4 text-white" />
                               </div>
                               <div>
@@ -316,14 +353,14 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                            <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:scale-110 transition-transform duration-200">
                                 <EyeOff className="h-3 w-3" />
                               </Button>
-                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:scale-110 transition-transform duration-200">
                                 <Copy className="h-3 w-3" />
                               </Button>
-                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:scale-110 transition-transform duration-200">
                                 <MoreVertical className="h-3 w-3" />
                               </Button>
                             </div>
@@ -335,13 +372,29 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 </div>
               </div>
 
-              {/* Animated Elements */}
+              {/* Enhanced Animated Elements */}
               <div className="absolute top-4 right-4 opacity-30">
-                <div className="animate-pulse">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mb-1"></div>
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mb-1"></div>
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <div className="flex flex-col space-y-1">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
                 </div>
+              </div>
+
+              {/* Floating Particles Effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-20 animate-float"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 3}s`,
+                      animationDuration: `${3 + Math.random() * 2}s`
+                    }}
+                  ></div>
+                ))}
               </div>
             </div>
           </div>
