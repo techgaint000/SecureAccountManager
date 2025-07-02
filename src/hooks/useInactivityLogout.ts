@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 
 const INACTIVITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-export function useInactivityLogout() {
+export function useInactivityLogout(isAuthenticated: boolean = false) {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const resetTimer = () => {
@@ -11,18 +11,38 @@ export function useInactivityLogout() {
       clearTimeout(timeoutRef.current);
     }
 
+    // Only set timer if user is authenticated
+    if (!isAuthenticated) {
+      return;
+    }
+
     timeoutRef.current = setTimeout(async () => {
-      const { error } = await supabase.auth.signOut();
-      
-      // Suppress the error if the session was already gone, as this is expected
-      // for inactivity logout scenarios where the session may have expired
-      if (error && !error.message.includes('Session from session_id claim in JWT does not exist')) {
-        console.error('Error during inactivity logout:', error);
+      try {
+        // Check if there's an active session before attempting to sign out
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (session) {
+          const { error } = await supabase.auth.signOut();
+          if (error) {
+            console.error('Error during inactivity logout:', error);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking session during inactivity logout:', error);
       }
     }, INACTIVITY_TIMEOUT);
   };
 
   useEffect(() => {
+    // Only set up inactivity logout if user is authenticated
+    if (!isAuthenticated) {
+      // Clear any existing timer if user is no longer authenticated
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      return;
+    }
+
     const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
     
     const handleActivity = () => {
@@ -46,5 +66,5 @@ export function useInactivityLogout() {
         document.removeEventListener(event, handleActivity);
       });
     };
-  }, []);
+  }, [isAuthenticated]);
 }

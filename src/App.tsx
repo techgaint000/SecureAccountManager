@@ -11,8 +11,8 @@ function App() {
   const { user, loading } = useAuth();
   const [showAuth, setShowAuth] = useState(false);
   
-  // Enable auto-logout for authenticated users
-  useInactivityLogout();
+  // Enable auto-logout only for authenticated users
+  useInactivityLogout(!!user);
 
   if (loading) {
     return (
