@@ -11,8 +11,14 @@ export function useInactivityLogout() {
       clearTimeout(timeoutRef.current);
     }
 
-    timeoutRef.current = setTimeout(() => {
-      supabase.auth.signOut();
+    timeoutRef.current = setTimeout(async () => {
+      const { error } = await supabase.auth.signOut();
+      
+      // Suppress the error if the session was already gone, as this is expected
+      // for inactivity logout scenarios where the session may have expired
+      if (error && !error.message.includes('Session from session_id claim in JWT does not exist')) {
+        console.error('Error during inactivity logout:', error);
+      }
     }, INACTIVITY_TIMEOUT);
   };
 
