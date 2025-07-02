@@ -54,7 +54,7 @@ export function Dashboard() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-sm border-gray-200 dark:border-gray-700">
+      <header className="sticky top-0 z-40 border-b bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-sm border-gray-200 dark:border-gray-700">
         <div className="w-full max-w-none px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -156,7 +156,7 @@ export function Dashboard() {
       <div className="w-full max-w-none px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Stats Overview */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 lg:mb-8">
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <Card className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Platforms</CardTitle>
               <Grid3X3 className="h-4 w-4 text-blue-600 dark:text-blue-400" />
@@ -169,7 +169,7 @@ export function Dashboard() {
             </CardContent>
           </Card>
           
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <Card className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Accounts</CardTitle>
               <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
@@ -182,7 +182,7 @@ export function Dashboard() {
             </CardContent>
           </Card>
           
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow col-span-2 lg:col-span-2">
+          <Card className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow col-span-2 lg:col-span-2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Security Status</CardTitle>
               <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-800">
@@ -206,12 +206,12 @@ export function Dashboard() {
               placeholder="Search platforms and accounts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white dark:bg-gray-800 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-11"
+              className="pl-10 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-11"
             />
           </div>
           
           <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0">
-            <div className="flex items-center space-x-1 bg-white dark:bg-gray-800 backdrop-blur-sm rounded-lg p-1 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center space-x-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg p-1 border border-gray-200 dark:border-gray-700">
               <Button
                 variant={viewMode === 'grid' ? 'default' : 'ghost'}
                 size="sm"
@@ -231,12 +231,12 @@ export function Dashboard() {
               </Button>
             </div>
             
-            <Button variant="outline" size="sm" className="bg-white dark:bg-gray-800 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 whitespace-nowrap">
+            <Button variant="outline" size="sm" className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 whitespace-nowrap">
               <Download className="h-4 w-4 mr-2" />
               <span className="hidden sm:inline">Export</span>
             </Button>
             
-            <Button variant="outline" size="sm" className="bg-white dark:bg-gray-800 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 whitespace-nowrap">
+            <Button variant="outline" size="sm" className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 whitespace-nowrap">
               <Upload className="h-4 w-4 mr-2" />
               <span className="hidden sm:inline">Import</span>
             </Button>
@@ -256,7 +256,7 @@ export function Dashboard() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6">
           {/* Platforms Section */}
           <div className="xl:col-span-1">
-            <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-gray-200 dark:border-gray-700 shadow-lg">
+            <Card className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center justify-between text-base sm:text-lg text-gray-900 dark:text-white">
                   Platforms
@@ -306,7 +306,7 @@ export function Dashboard() {
 
           {/* Accounts Section */}
           <div className="xl:col-span-3">
-            <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-gray-200 dark:border-gray-700 shadow-lg">
+            <Card className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center justify-between text-base sm:text-lg text-gray-900 dark:text-white">
                   {selectedPlatform 

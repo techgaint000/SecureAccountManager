@@ -42,36 +42,39 @@ export function AuthForm({ onBack }: AuthFormProps) {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 p-4">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 p-4 sm:p-6 lg:p-8">
       <div className="w-full max-w-md mx-auto">
         {/* Header with theme toggle */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
           {onBack && (
             <Button 
               variant="ghost" 
               onClick={onBack}
-              className="text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-800/50"
+              className="text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-800/50 transition-all duration-200"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
+              <span className="hidden sm:inline">Back to Home</span>
+              <span className="sm:hidden">Back</span>
             </Button>
           )}
-          <ThemeToggle />
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="flex items-center justify-center mb-6">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl shadow-lg">
               <Shield className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
             Welcome to SecureVault
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg">Your secure credential manager</p>
+          <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mb-4">Your secure credential manager</p>
           
-          <div className="flex items-center justify-center mt-4 text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-400">
             <Sparkles className="h-4 w-4 mr-2 text-purple-500" />
             Trusted by 10,000+ users worldwide
           </div>
@@ -88,8 +91,18 @@ export function AuthForm({ onBack }: AuthFormProps) {
           <CardContent className="pt-0">
             <Tabs defaultValue="signin" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-100 dark:bg-gray-700">
-                <TabsTrigger value="signin" className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white">Sign In</TabsTrigger>
-                <TabsTrigger value="signup" className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white">Sign Up</TabsTrigger>
+                <TabsTrigger 
+                  value="signin" 
+                  className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                >
+                  Sign In
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="signup" 
+                  className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-gray-600 data-[state=active]:text-gray-900 dark:data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                >
+                  Sign Up
+                </TabsTrigger>
               </TabsList>
               
               <TabsContent value="signin" className="space-y-0">
@@ -106,7 +119,7 @@ export function AuthForm({ onBack }: AuthFormProps) {
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                        className="pl-10 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                         required
                       />
                     </div>
@@ -124,13 +137,13 @@ export function AuthForm({ onBack }: AuthFormProps) {
                         placeholder="Enter your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="pl-10 pr-12 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                        className="pl-10 pr-12 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                         required
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
                       >
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
@@ -174,7 +187,7 @@ export function AuthForm({ onBack }: AuthFormProps) {
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                        className="pl-10 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                         required
                       />
                     </div>
@@ -192,14 +205,14 @@ export function AuthForm({ onBack }: AuthFormProps) {
                         placeholder="Create a strong password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="pl-10 pr-12 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                        className="pl-10 pr-12 h-11 sm:h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
                         required
                         minLength={6}
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200"
                       >
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
@@ -236,7 +249,7 @@ export function AuthForm({ onBack }: AuthFormProps) {
         </Card>
         
         {/* Security Notice */}
-        <div className="text-center mt-8 space-y-2">
+        <div className="text-center mt-8 space-y-3">
           <div className="flex items-center justify-center text-sm text-gray-700 dark:text-gray-300">
             <Shield className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
             Your data is encrypted and secure

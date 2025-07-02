@@ -78,11 +78,11 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
   if (accounts.length === 0) {
     return (
       <div className="text-center py-16">
-        <div className="bg-gray-100 rounded-full p-6 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-          <User className="h-10 w-10 text-gray-400" />
+        <div className="bg-gray-100 dark:bg-gray-700 rounded-full p-6 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+          <User className="h-10 w-10 text-gray-400 dark:text-gray-500" />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">No accounts found</h3>
-        <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">No accounts found</h3>
+        <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
           Add your first account to get started with secure credential management. 
           Your data will be encrypted and protected.
         </p>
@@ -99,7 +99,7 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
           const isPasswordVisible = visiblePasswords.has(account.id);
 
           return (
-            <Card key={account.id} className="group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-white/90 backdrop-blur-sm border-gray-200/50">
+            <Card key={account.id} className="group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50">
               <CardContent className="p-5">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
@@ -115,9 +115,9 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                       </div>
                     )}
                     <div>
-                      <h4 className="font-semibold text-gray-900 text-lg">{account.name}</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-lg">{account.name}</h4>
                       {platform && (
-                        <p className="text-sm text-gray-500">{platform.name}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{platform.name}</p>
                       )}
                     </div>
                   </div>
@@ -128,13 +128,13 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-white/95 backdrop-blur-sm">
+                    <DropdownMenuContent align="end" className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
                       <DropdownMenuItem>
                         <Edit className="h-4 w-4 mr-2" />
                         Edit Account
                       </DropdownMenuItem>
                       <DropdownMenuItem 
-                        className="text-red-600 focus:text-red-600"
+                        className="text-red-600 focus:text-red-600 dark:text-red-400 dark:focus:text-red-400"
                         onClick={() => handleDeleteAccount(account.id, account.name)}
                       >
                         <Trash2 className="h-4 w-4 mr-2" />
@@ -146,15 +146,15 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
 
                 <div className="space-y-3">
                   {account.email && (
-                    <div className="flex items-center justify-between p-3 bg-gray-50/80 rounded-lg">
-                      <div className="flex items-center space-x-3 text-gray-700 min-w-0 flex-1">
-                        <Mail className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                    <div className="flex items-center justify-between p-3 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg">
+                      <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 min-w-0 flex-1">
+                        <Mail className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                         <span className="truncate text-sm">{account.email}</span>
                       </div>
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="h-8 w-8 p-0 hover:bg-gray-200"
+                        className="h-8 w-8 p-0 hover:bg-gray-200 dark:hover:bg-gray-600"
                         onClick={() => copyToClipboard(account.email, 'Email')}
                       >
                         <Copy className="h-3 w-3" />
@@ -163,15 +163,15 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                   )}
 
                   {account.username && (
-                    <div className="flex items-center justify-between p-3 bg-gray-50/80 rounded-lg">
-                      <div className="flex items-center space-x-3 text-gray-700 min-w-0 flex-1">
-                        <User className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                    <div className="flex items-center justify-between p-3 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg">
+                      <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 min-w-0 flex-1">
+                        <User className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                         <span className="truncate text-sm">{account.username}</span>
                       </div>
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="h-8 w-8 p-0 hover:bg-gray-200"
+                        className="h-8 w-8 p-0 hover:bg-gray-200 dark:hover:bg-gray-600"
                         onClick={() => copyToClipboard(account.username, 'Username')}
                       >
                         <Copy className="h-3 w-3" />
@@ -180,8 +180,8 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                   )}
 
                   {account.password && (
-                    <div className="flex items-center justify-between p-3 bg-gray-50/80 rounded-lg">
-                      <div className="flex items-center space-x-3 text-gray-700 min-w-0 flex-1">
+                    <div className="flex items-center justify-between p-3 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg">
+                      <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 min-w-0 flex-1">
                         <span className="text-sm">🔒</span>
                         <span className="font-mono text-sm">
                           {isPasswordVisible ? account.password : '••••••••'}
@@ -191,7 +191,7 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                         <Button 
                           variant="ghost" 
                           size="sm" 
-                          className="h-8 w-8 p-0 hover:bg-gray-200"
+                          className="h-8 w-8 p-0 hover:bg-gray-200 dark:hover:bg-gray-600"
                           onClick={() => togglePasswordVisibility(account.id)}
                         >
                           {isPasswordVisible ? 
@@ -202,7 +202,7 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                         <Button 
                           variant="ghost" 
                           size="sm" 
-                          className="h-8 w-8 p-0 hover:bg-gray-200"
+                          className="h-8 w-8 p-0 hover:bg-gray-200 dark:hover:bg-gray-600"
                           onClick={() => copyToClipboard(account.password, 'Password')}
                         >
                           <Copy className="h-3 w-3" />
@@ -212,17 +212,17 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                   )}
 
                   {account.notes && (
-                    <div className="p-3 bg-blue-50/80 rounded-lg">
-                      <div className="flex items-start space-x-3 text-gray-700">
-                        <StickyNote className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div className="p-3 bg-blue-50/80 dark:bg-blue-900/20 rounded-lg">
+                      <div className="flex items-start space-x-3 text-gray-700 dark:text-gray-300">
+                        <StickyNote className="h-4 w-4 text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                         <span className="text-sm leading-relaxed">{account.notes}</span>
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <Badge variant="outline" className="text-xs bg-gray-50">
+                <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
+                  <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600">
                     {new Date(account.created_at).toLocaleDateString()}
                   </Badge>
                 </div>
@@ -243,7 +243,7 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
         const isPasswordVisible = visiblePasswords.has(account.id);
 
         return (
-          <Card key={account.id} className="group hover:shadow-md transition-all duration-200 bg-white/90 backdrop-blur-sm border-gray-200/50">
+          <Card key={account.id} className="group hover:shadow-md transition-all duration-200 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4 flex-1 min-w-0">
@@ -261,14 +261,14 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-3 mb-1">
-                      <h4 className="font-semibold text-gray-900 truncate">{account.name}</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-white truncate">{account.name}</h4>
                       {platform && (
-                        <Badge variant="outline" className="text-xs bg-gray-50 border-gray-200">
+                        <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600">
                           {platform.name}
                         </Badge>
                       )}
                     </div>
-                    <div className="flex items-center space-x-6 text-sm text-gray-600">
+                    <div className="flex items-center space-x-6 text-sm text-gray-600 dark:text-gray-400">
                       {account.email && (
                         <span className="flex items-center space-x-2">
                           <Mail className="h-3 w-3" />
@@ -316,13 +316,13 @@ export function AccountsList({ accounts, platforms, viewMode }: AccountsListProp
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-white/95 backdrop-blur-sm">
+                    <DropdownMenuContent align="end" className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
                       <DropdownMenuItem>
                         <Edit className="h-4 w-4 mr-2" />
                         Edit Account
                       </DropdownMenuItem>
                       <DropdownMenuItem 
-                        className="text-red-600 focus:text-red-600"
+                        className="text-red-600 focus:text-red-600 dark:text-red-400 dark:focus:text-red-400"
                         onClick={() => handleDeleteAccount(account.id, account.name)}
                       >
                         <Trash2 className="h-4 w-4 mr-2" />
