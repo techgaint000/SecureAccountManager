@@ -22,9 +22,21 @@ export function useInactivityLogout(isAuthenticated: boolean = false) {
         const { data: { session } } = await supabase.auth.getSession();
         
         if (session) {
-          const { error } = await supabase.auth.signOut();
-          if (error) {
-            console.error('Error during inactivity logout:', error);
+          // Try to sign out, but handle session_not_found errors gracefully
+          try {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+              console.warn('Inactivity logout error:', error);
+            }
+          } catch (signOutError: any) {
+            // Check if it's a session_not_found error
+            if (signOutError?.message?.includes('session_not_found') || 
+                signOutError?.message?.includes('Session from session_id claim in JWT does not exist')) {
+              console.warn('Session already expired during inactivity logout');
+              // The global error handler in useAuth will handle clearing the user state
+            } else {
+              console.error('Unexpected error during inactivity logout:', signOutError);
+            }
           }
         }
       } catch (error) {
