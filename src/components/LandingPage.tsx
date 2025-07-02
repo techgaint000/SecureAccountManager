@@ -17,7 +17,17 @@ import {
   Users,
   Award,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Mail,
+  User,
+  Copy,
+  EyeOff,
+  MoreVertical,
+  Grid3X3,
+  TrendingUp,
+  Calendar,
+  Search,
+  Plus
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -181,17 +191,158 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </div>
           </div>
 
-          {/* Hero Image/Dashboard Preview */}
-          <div className="relative max-w-5xl mx-auto px-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl sm:rounded-3xl blur-3xl"></div>
-            <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 p-2">
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 sm:p-6 rounded-2xl inline-block mb-4">
-                    <Shield className="h-8 sm:h-12 w-8 sm:w-12 text-white" />
+          {/* Interactive Dashboard Preview */}
+          <div className="relative max-w-6xl mx-auto px-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 sm:p-4 overflow-hidden">
+              
+              {/* Mock Dashboard Header */}
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-4 mb-4 border border-gray-200/50 dark:border-gray-700/50">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
+                      <Shield className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-white text-sm">SecureVault</h3>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">Credential Manager</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">Dashboard Preview</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Beautiful, intuitive interface coming to life</p>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">U</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mock Stats Cards */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Platforms</span>
+                    <Grid3X3 className="h-3 w-3 text-blue-600" />
+                  </div>
+                  <div className="text-lg font-bold text-blue-600">5</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Accounts</span>
+                    <Shield className="h-3 w-3 text-green-600" />
+                  </div>
+                  <div className="text-lg font-bold text-green-600">12</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-3 border border-gray-200/50 dark:border-gray-700/50 col-span-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Security</span>
+                    <TrendingUp className="h-3 w-3 text-emerald-600" />
+                  </div>
+                  <div className="text-lg font-bold text-emerald-600">98%</div>
+                </div>
+              </div>
+
+              {/* Mock Search Bar */}
+              <div className="relative mb-4">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl pl-10 pr-4 py-3 border border-gray-200/50 dark:border-gray-700/50 text-sm text-gray-600 dark:text-gray-400">
+                  Search platforms and accounts...
+                </div>
+                <Button size="sm" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 text-xs">
+                  <Plus className="h-3 w-3 mr-1" />
+                  Add
+                </Button>
+              </div>
+
+              {/* Mock Content Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                {/* Platforms Column */}
+                <div className="lg:col-span-1">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm">Platforms</h4>
+                    <div className="space-y-2">
+                      {[
+                        { name: 'Gmail', color: '#ea4335', accounts: 3 },
+                        { name: 'GitHub', color: '#333333', accounts: 2 },
+                        { name: 'LinkedIn', color: '#0077b5', accounts: 1 }
+                      ].map((platform, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100/80 dark:hover:bg-gray-600/50 transition-colors cursor-pointer">
+                          <div className="flex items-center space-x-2">
+                            <div 
+                              className="w-6 h-6 rounded-lg flex items-center justify-center"
+                              style={{ backgroundColor: `${platform.color}20` }}
+                            >
+                              <Mail className="h-3 w-3" style={{ color: platform.color }} />
+                            </div>
+                            <span className="text-xs font-medium text-gray-900 dark:text-white">{platform.name}</span>
+                          </div>
+                          <Badge variant="secondary" className="text-xs">{platform.accounts}</Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Accounts Column */}
+                <div className="lg:col-span-3">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">Gmail Accounts</h4>
+                      <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-xs">
+                        <Plus className="h-3 w-3 mr-1" />
+                        Add
+                      </Button>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {[
+                        { name: 'Personal Gmail', email: 'john@gmail.com', username: 'john.doe' },
+                        { name: 'Work Gmail', email: 'john@company.com', username: 'j.doe' }
+                      ].map((account, index) => (
+                        <div key={index} className="bg-gradient-to-r from-gray-50/80 to-blue-50/80 dark:from-gray-700/50 dark:to-blue-900/20 rounded-xl p-4 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                              <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-lg">
+                                <Mail className="h-4 w-4 text-white" />
+                              </div>
+                              <div>
+                                <h5 className="font-semibold text-gray-900 dark:text-white text-sm">{account.name}</h5>
+                                <div className="flex items-center space-x-4 text-xs text-gray-600 dark:text-gray-400">
+                                  <span className="flex items-center space-x-1">
+                                    <Mail className="h-3 w-3" />
+                                    <span>{account.email}</span>
+                                  </span>
+                                  <span className="flex items-center space-x-1">
+                                    <User className="h-3 w-3" />
+                                    <span>{account.username}</span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                                <EyeOff className="h-3 w-3" />
+                              </Button>
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                                <Copy className="h-3 w-3" />
+                              </Button>
+                              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                                <MoreVertical className="h-3 w-3" />
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Animated Elements */}
+              <div className="absolute top-4 right-4 opacity-30">
+                <div className="animate-pulse">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mb-1"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mb-1"></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                 </div>
               </div>
             </div>
