@@ -1,7 +1,6 @@
-import { Globe, Mail, Shield, User, Key, Lock, Server, Facebook, Twitter, Instagram, Github, Linkedin, Youtube, Chrome, MessageSquare, Camera, Music, ShoppingCart, CreditCard, Gamepad2, Video, Cloud, Database, Briefcase, GraduationCap, Heart, MapPin, Smartphone, Tv, Headphones, BookOpen, Car, Home, Plane, Coffee, Utensils, ShoppingBag, Palette, Code, Settings, Zap, Layers, Monitor, Wifi, Calendar, Clock, Bell, Flag, Star, Award, Target, TrendingUp, BarChart, PieChart, Activity, Compass, Map, Navigation, Route, Bookmark, Tag, Filter, Search, Edit, Eye, Download, Upload, Share, Copy, Save, Trash, Archive, Folder, File, Image, FileText, MessageCircle, Phone, Webcam, Mic, Speaker, Volume2, Battery, Power, Cpu, HardDrive, MemoryStick as Memory, Network, Bluetooth, Usb, Printer, Scan as Scanner, Mouse, Keyboard, Joystick, RadioIcon, Tv2, Tablet, Watch, Glasses, Shirt, Package, Truck, Building, Store, Factory, School, Hospital, Church, Library, House as Museum, Theater, Radius as Stadium, Sparkle as Park, Bean as Beach, Mountain, Trees as Tree, Flower, Sun, Moon, Cloud as CloudIcon, CloudRain, CloudSnow, Wind, Thermometer, Umbrella, Snowflake } from 'lucide-react';
-import type { Icon } from 'lucide-react';
+import { Globe, Mail, Shield, User, Key, Lock, Server, Facebook, Twitter, Instagram, Github, Linkedin, Youtube, Chrome, MessageSquare, Camera, Music, ShoppingCart, CreditCard, Gamepad2, Video, Cloud, Database, Briefcase, GraduationCap, Heart, MapPin, Smartphone, Tv, Headphones, BookOpen, Car, Home, Plane, Coffee, Utensils, ShoppingBag, Palette, Code, Settings, Zap, Layers, Monitor, Wifi, Calendar, Clock, Bell, Flag, Star, Award, Target, TrendingUp, BarChart, PieChart, Activity, Compass, Map, Navigation, Route, Bookmark, Tag, Filter, Search, Edit, Eye, Download, Upload, Share, Copy, Save, Trash, Archive, Folder, File, Image, FileText, MessageCircle, Phone, Webcam, Mic, Speaker, Volume2, Battery, Power, Cpu, HardDrive, MemoryStick as Memory, Network, Bluetooth, Usb, Printer, Scan as Scanner, Mouse, Keyboard, Joystick, RadioIcon, Tv2, Tablet, Watch, Glasses, Shirt, Package, Truck, Building, Store, Factory, School, Hospital, Church, Library, House as Museum, Theater, Radius as Stadium, Sparkle as Park, Bean as Beach, Mountain, Trees as Tree, Flower, Sun, Moon, Cloud as CloudIcon, CloudRain, CloudSnow, Wind, Thermometer, Umbrella, Snowflake, LucideIcon } from 'lucide-react';
 
-export const iconMap: Record<string, Icon> = {
+export const iconMap: Record<string, LucideIcon> = {
   globe: Globe,
   mail: Mail,
   shield: Shield,
@@ -131,7 +130,7 @@ export const iconMap: Record<string, Icon> = {
   snowflake: Snowflake,
 };
 
-export function getIconComponent(iconName: string): Icon {
+export function getIconComponent(iconName: string): LucideIcon {
   return iconMap[iconName.toLowerCase()] || Globe;
 }
 
