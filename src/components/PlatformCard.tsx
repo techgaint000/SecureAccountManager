@@ -33,10 +33,10 @@ export function PlatformCard({ platform, isSelected, onClick, accountCount }: Pl
 
   return (
     <Card 
-      className={`group cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${
+      className={`group cursor-pointer transition-all duration-500 hover:shadow-xl transform hover:-translate-y-1 ${
         isSelected 
-          ? 'ring-2 ring-blue-500 dark:ring-blue-400 bg-gradient-to-r from-blue-50 to-emerald-50 dark:from-blue-900/20 dark:to-emerald-900/20 shadow-lg' 
-          : 'hover:bg-gray-50/80 dark:hover:bg-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50'
+          ? 'ring-2 ring-blue-500 dark:ring-blue-400 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30 shadow-xl border-blue-200 dark:border-blue-700' 
+          : 'hover:bg-slate-50/80 dark:hover:bg-slate-700/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-slate-200/50 dark:border-slate-700/50'
       }`}
       onClick={onClick}
     >
@@ -44,19 +44,22 @@ export function PlatformCard({ platform, isSelected, onClick, accountCount }: Pl
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 flex-1 min-w-0">
             <div 
-              className={`p-2.5 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
-                isSelected ? 'shadow-md' : ''
+              className={`p-3 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg ${
+                isSelected ? 'shadow-xl' : ''
               }`}
-              style={{ backgroundColor: `${platform.color}20` }}
+              style={{ 
+                backgroundColor: `${platform.color}20`,
+                boxShadow: `0 8px 32px ${platform.color}15`
+              }}
             >
               <IconComponent 
-                className="h-5 w-5" 
+                className="h-5 w-5 transition-transform duration-300" 
                 style={{ color: platform.color }}
               />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-gray-900 dark:text-white truncate text-sm">{platform.name}</h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+              <h3 className="font-bold text-slate-900 dark:text-white truncate text-sm mb-1">{platform.name}</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                 {accountCount} {accountCount === 1 ? 'account' : 'accounts'}
               </p>
             </div>
@@ -65,9 +68,9 @@ export function PlatformCard({ platform, isSelected, onClick, accountCount }: Pl
           <div className="flex items-center space-x-2">
             <Badge 
               variant="secondary" 
-              className="text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              className="text-xs font-bold bg-white/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600 shadow-sm"
               style={{ 
-                backgroundColor: `${platform.color}15`, 
+                backgroundColor: `${platform.color}10`, 
                 color: platform.color,
                 borderColor: `${platform.color}30`
               }}
@@ -80,18 +83,18 @@ export function PlatformCard({ platform, isSelected, onClick, accountCount }: Pl
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-200 dark:hover:bg-gray-600"
+                  className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-slate-200 dark:hover:bg-slate-600 hover:scale-110"
                 >
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
-                <DropdownMenuItem>
+              <DropdownMenuContent align="end" className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/50 dark:border-slate-700/50 shadow-2xl">
+                <DropdownMenuItem className="hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors duration-200">
                   <Edit className="h-4 w-4 mr-2" />
                   Edit Platform
                 </DropdownMenuItem>
                 <DropdownMenuItem 
-                  className="text-red-600 focus:text-red-600 dark:text-red-400 dark:focus:text-red-400"
+                  className="text-red-600 focus:text-red-600 dark:text-red-400 dark:focus:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors duration-200"
                   onClick={handleDelete}
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
